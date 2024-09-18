@@ -1,0 +1,707 @@
+# Day 1
+## CFTd base URL
+`10.50.28.228`
+## LinOps IP
+`10.50.38.176`
+## WinOps IP
+`10.50.41.10`
+## VPN setup
+`https://cctc.cybbh.io/students/students/latest/Day_0_Setup.html`
+## Creating and Deleting
+```bash
+touch
+mkdir
+mkdir -m 	 -umask
+mkdir -p 	 -forces creation of parent dirs as needed
+rm
+rm -r      -recursivly delete
+rm -rf     -recurcivly and force delete
+rmdir
+rmdir -p 	 -WARNING: removes current dir and parent dirs
+touch -t [202406171200.00] <filename>
+```
+## Man
+```bash
+G 					  -moves to end of man page
+g 					  -moves to start of man page
+/pattern		  -searches FWD for pattern ie: /logs
+?pattern 			-searches BACK for pattern ie: ?logs
+q 					  -quit man
+```
+## Copying and Renaming Files
+```bash
+ copy (cp)  copy and renames a file ( cp <path of file> <path of destination> )
+ paste 		
+ move (mv) moves and rename a file
+```
+## Find
+'{}' hold output for find commands.
+```
+ find -name		denotes case-sensitive file
+ find -iname 		denotes case-insensitive file
+ find -ilname 		" and symbolic linked files
+ find -inum ##### 	searches for file w/ inode "#####"
+ find -size 		denotes file of "x" size
+ find -size 10c 	finds file of size exactly 10 bytes
+ find -size +10M -20M 	finds file of size greater than 10MB and less than 20MB
+ find -size -1G 	finds file of size less than 1GB
+ find -group 		denotes belonging to group "name"
+ find -gid 		denotes files belonging to group ID "###"
+ find -user		denotes files belonging to user: "name"
+ find -uid 		denotes files belonging to user ID: "###"
+ find -maxdepth 	searches to designated depth only for designated files
+ find /* 		starts recursive search at "/"
+ find /* -type d	" for directories ONLY
+ find /* -type f	" for files ONLY
+ find /* -type p 	" for named-pipes ONLY
+ find /* -type l	" for symbolic links ONLY
+ find /* -type s	" for sockets ONLY
+ find / -type s -exec echo {} 2>/dev/null ; | grep domain* finds socket files
+ find -name \*.txt 	searches from pwd recursively for files ending in ".txt"
+ find -atime 3 		accessed in last 3 days NOTE( add a '-' for less then and a '+' for 
+                        greater then)
+ find -ctime 2		changed 2 days ago
+ find -mtime 2		modified 2 days ago
+ find $HOME -mtime 0 	searches for files modified in last 24hrs in current-user home-dir
+ find -cmin -30		changed last 30 minutes
+ find -amin -60		accessed last hour
+ find -mmin -60		modified in last hour
+ find -empty		searches for empty files ONLY
+ find -executable	searches for executable files ONLY
+ find -exec		execute CMD;true is "0" status returned
+
+ find /var/log/ -iname *.log -exec ls -al {} 2>/dev/null \;
+
+            		finds all .log files in directory: /var/log/ and lists them all
+
+ find -path		searches in designated path
+ find -ls		lists files that are found
+ find -print		print output and automatically adds new-line
+ find -printf \n	prints output followed by new-line
+ find -prune		searches for files recursively but avoids descending into dirs
+ find -perm		denotes files with designated permissions level
+
+ find / -perm /4000 -uid 0 -ls 2>/dev/null
+
+            		finds all SUID files owned by "root" and displays them
+
+ find / -perm -2 -type f 2>/dev/null
+
+            		finds all GUID world files
+
+ find / -perm -2 ! -type -l -ls 2>/dev/null
+
+            		finds all GUID world files that are not links
+
+ find / ! -path "/proc/*" ! -path "/root/*" -perm -2 -type -f -ls 2>/dev/null
+
+            		finds all world files not in directories: /proc OR /root
+
+ find / -perm /2 -ls 2>/dev/null
+
+            		finds files writable by anyone
+```
+## Chmod
+Change permissions of files
+```bash
+chmod +x <path of file> makes file executable
+```
+## PWD
+Prints working directory
+```bash
+pwd
+```
+## Process
+```bash
+ ps -elf
+ ps -u Jim 		IDs processes use by user: Jim
+ ps --forest 		show complete process tree with parent child relationships
+ ps -u Jim --forest 	show for user: Jim only
+ ps u U Jim --forest 	owned by user: Jim
+ ps aux 		a == shows all procs running on system
+          u == users running the proc
+          x == CMDs that ran the procs.
+```
+## URL for Find 
+`https://linuxhandbook.com/find-exec-command/`
+## Grep
+```bash
+grep -c 				counts number of lines that match
+grep -r ; grep -R			recursive
+grep -f 				files only
+grep -E 				regular expressions (GNU)
+grep -o 				displays ONLY matches of regex / not whole line
+grep -i 				case-insensitive match
+grep -v 				Invert the sense of matching, to select non-matching lines
+grep -l 				displays only file name (full path) of matching regex
+grep -C# 				in context of match (# of lines before and after)
+grep -A# 				displays # of lines after matching regex
+grep -B# 				displays # of line before matching regex
+grep -P 				uses Pearl regular expressions (non-GNU)
+grep "" 				shell quoting (BASH interpretable)
+grep '' 				shell quoting (NOT BASH interpretable)
+```
+## Regex URL
+`https://regex101.com/`
+## Regex
+```bash
+Wildcards
+ 	? 		matches 0 or more occurances (may or may not occur) +
+	. 		any single character
+	*		any chars
+	^		represents start of string
+	$		represents end of string
+	[a-zA-Z0-9]	can contain any within range [..]
+	[1..99] 	denotes range from 1 to 99
+	{1,3} 		can contain as few or as many of {..,..}
+	[1-3]*		denotes one or more matches to [1-3]
+	.*		used to match any single character one or more times
+	\. 		matches the actual dot "."
+	\?		matches the actual question mark "?"
+	+		matches 1 or more occurances
+	(….)		denote sub-expressions
+	"cat|dog[fish]" can match either cat fish OR dog fish
+	$touch \{cat,dog,flying,running}fish
+	$ls -1 | grep "cat|dog[fish]"
+	| 		matches either (….) | (….) essentially an "OR"
+```
+## Brace Expansion
+```
+mkdir brekyburritos11{23,45,67} creates multiple directories of the same naming convention adding the numbers in {} to the end of the name
+```
+## Kill
+```bash
+pkill <name> kill process by name 
+kill <PID> kill process by PID
+kill -9 <PID> force kill
+```
+## Cut
+```
+cut -d: -f1         displays only portion of line before 1st instance of delimiter ``:''
+cut -d: -f1-        " and any following strings up to the very next instance ``:''
+cut -d: -f1- -s     " " but don’t print any lines not containing delimiter ``:''
+cut -f3             displays only the 3rd field delimited by space
+cut -f2-4           displays only fields 2 through 4 delimited by space
+cut -c3-10          displays only the 3rd through 10th characters of each line
+```
+## 02 - Bash Activity
+Copy all files in the $HOME/1123 directory, that end in ".txt", and omit files containing a tilde "~" character, to directory $HOME/CUT.
+```bash
+find $HOME/1123/ -iname *.txt ! -path "$HOME/1123/*~.txt" -exec cp {} $HOME/CUT/ 2>/dev/null \;
+```
+
+Use only the find and cp commands. You will need to utilize the -exec option on find to accomplish this activity.
+## 03 - Bash Activity
+Using ONLY the find command, find all empty files/directories in directory /var and print out ONLY the filename (not absolute path), and the inode number, separated by newlines.
+```bash
+find /var -empty -printf "%i %f\n"
+```
+
+## 04 - Bash Activity
+Using ONLY the find command, find all files on the system with inode 4026532575 and print only the filename to the screen, not the absolute path to the file, separating each filename with a newline. Ensure unneeded output is not visible.
+```bash
+find / -inum 4026532575 -printf "%f\n" 2>/dev/null
+```
+
+## 05 - Bash Activity
+Using only the ls -l and cut Commands, write a BASH script that shows all filenames with extensions ie: 1.txt, etc., but no directories, in $HOME/CUT.
+Write those to a text file called names in $HOME/CUT directory.
+Omit the names filename from your output.
+```bash
+ls -1 $HOME/CUT/ | cut -d. -f1- -s > $HOME/CUT/names
+ls -l $HOME/CUT/ | cut -d. -f1- -s | cut -d: -f2 | cut -d' ' -f2 > $HOME/CUT/names
+```
+# Day 2
+## awk
+```bash
+awk -F: '{print $1}'         displays 1st field delimited by a ":"
+awk '{print $2}'             displays 2nd field, delimited automatically by space
+awk '{print $0}'             displays all string data that matches
+
+awk -F: '($3 == 0) {print $1}' /etc/passwd    displays 1st field (username) IF the 3rd field (UID) is equal to "0"
+
+awk '{print $NF}'           displays only the last field of every line
+awk -F: 'BEGIN {OFS='#'}{print $1,$6,$3}'  displays 1st, 6th and 3rd field seperated by '#'
+```
+## Sort
+```bash
+sort                sorts content according to position on the ASCII table
+sort -n             sorts content numerically
+sort -u             sorts content uniqely
+sort -nr            sorts content numerically reversed
+sort -t +           sorts feild seperator
+sort -k 2,4         sorts 1st by content in the 2nd column, then by content in the 4th column
+```
+## Uniq 
+```bash
+uniq                sorts content uniqely
+uniq -c             sorts content uniqely with a count reading
+```
+## Uniq URL
+`https://unix.stackexchange.com/questions/76049/what-is-the-difference-between-sort-u-and-sort-uniq`
+
+## Tar
+Syntax of 'tar' command - tar [options] [archive-file] [file or directory to be archived]
+tar: The command itself.
+[options]: Optional flags or settings that modify the behavior of the tar command.
+[archive-file]: The name of the archive file you are creating or working with.
+[file or directory to be archived]: The file or directory you want to include in the archive.
+```bash
+'-c' - Creates an archive by bundling files and directories together.
+'-x' - Extracts files and directories from an existing archive.
+'-f' - Specifies the filename of the archive to be created or extracted.
+'-v' - Displays verbose information, providing detailed output during the archiving or extraction process.
+'-z' - Uses gzip compression when creating a tar file, resulting in a compressed archive with the ‘.tar.gz’ extension.
+```
+## 06 BASH Activity
+Write a basic bash script that greps ONLY the IP addresses in the text file provided (named StoryHiddenIPs in the current directory); sort them uniquely by number of times they appear.
+```bash
+grep -E -o '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' StoryHiddenIPs | sort | uniq -c | sort -nr
+```
+## 07 BASH Activity
+Using ONLY the awk command, write a BASH one-liner script that extracts ONLY the names of all the system and user accounts that are not UIDs 0-3.
+Only display those that use /bin/bash as their default shell.
+The input file is named $HOME/passwd and is located in the current directory.
+Output the results to a file called $HOME/SED/names.txt
+```bash
+awk -F: '($3 >= 4){print $0}' $HOME/passwd | awk -F: '($NF == "/bin/bash") {print $1}' > $HOME/SED/names.txt
+```
+## 08 BASH Activity
+Find all dmesg kernel messages that contain CPU or BIOS (uppercase) in the string, but not usable or reserved (case-insensitive)
+Print only the msg itself, omitting the bracketed numerical expressions ie: [1.132775]
+```bash
+dmesg | egrep "CPU|BIOS" | egrep -vi "usable|reserved" | cut -d ']' -f2-
+```
+# Day 3
+## Sed
+```bash
+sed '/.dll/{x;p;p;p;x}' -i document.txt
+    directly alters document.txt by adding 3 empty lines before the designated regex (.dll)
+    'x' means swap pattern and hold buffers (the hold buffer defaults to a newline)
+    'p' means print the pattern
+
+sed '/stuff/G;/stuff/G' -i document.txt
+    directly alters document.txt by adding 2 empty lines after the designated regex (stuff)
+    'G' means append the "hold buffer" which is a newline by default
+
+sed -i -e 's/ANCHOVIES/SAUSAGE/g' pizaster.htm
+            replaces every instance of "ANCHOVIES" with "SAUSAGE" on pizaster.htm
+            's' means substitute pattern with replacement
+            'g' means global on each line
+
+sed -i -e 's/ANCHOVIES//' pizaster.htm
+            removes first instance of "ANCHOVIES" on each line in pizaster.htm
+
+sed -i '/^#/d' /etc/hosts.allow
+            removes all lines starting with "#" from file /etc/hosts.allow
+            'd' means delete the line
+            'e' expression for multiple sed patterns
+            '$' means end of line
+```
+
+## Command Substitution
+```bash
+#!/bin/bash
+A=$(cat /etc/passwd)
+echo $A
+```
+## Bash Variables
+```bash
+A=value                 A=120
+B=value                 B=20
+expr $A - $B            =100
+C=$(expr $A - $B)
+echo $C                 =100
+D=.mp3                  for x in $(cat songs); do sed -i "s/$/$D/"; done
+                        =appends .mp3 to the end of every song in file: songs
+```
+## if Statement
+when comparing a string you should never use -eq OR -ne, instead use == OR !=
+when comparing a string integer either is fine to use .. ex:
+```bash
+if [[ banana == apple ]];
+	then echo "banana is an apple"
+else echo "banana is NOT an apple";
+```
+or
+```bash
+contetns=$(cat simple)
+if [[ $contents == "tacos" ]]; then
+	echo "are good on tuesdays"
+elif [[ $contents == "costco is amaizing" ]]; then
+	echo "and will save you money"
+elif [[ $contents == "chicken bake" ]]; then
+	echo "tatsy but will make you fail ht/wt"
+else
+	echo "no tax at commisary"
+fi
+```
+## Word Count
+```bash
+ls -1 | wc -l
+```
+## 09-BASH Activity
+Write a Bash script using "Command Substitution" to replace all passwords, using openssl, from the file $HOME/PASS/shadow.txt with the MD5 encrypted password: Password1234, with salt: bad4u
+```bash
+#!/bin/bash
+A=$(openssl passwd -1 -salt bad4u Password1234)
+awk -F: -v "awk_var=$A" 'BEGIN {OFS=":"} {$2=awk_var} {print $0}' $HOME/PASS/shadow.txt
+```
+## 10-BASH Activity
+Using ONLY sed, write all lines from $HOME/passwd into $HOME/PASS/passwd.txt that do not end with either /bin/sh or /bin/false.
+```bash
+sed -e '/\/bin\/sh/d' -e '/\/bin\/false/d' $HOME/passwd > $HOME/PASS/passwd.txt
+```
+## 11-BASH Activity
+Using find, find all files under the $HOME directory with a .bin extension ONLY.
+Once the file(s) and their path(s) have been found, remove the file name from the absolute path output.
+Ensure there is no trailing / at the end of the directory path when outputting to standard output.
+You may need to sort the output depending on the command(s) you use.
+```bash
+find $HOME -iname "*.bin" -printf "%h\n" | sort | uniq | sort
+```
+## 12-BASH Activity
+Write a script which will copy the last entry/line in the passwd-like file specified by the $1 positional parameter
+Modify the copied line to change:
+User name to the value specified by $2 positional parameter
+Used id and group id to the value specified by $3 positional parameter
+Home directory to a directory matching the user name specified by $2 positional parameter under the /home directory
+The default shell to `/bin/bash'
+Append the modified line to the end of the file
+```bash
+tail -1 $1 | awk -F: -v "user_name=$2" -v "user_id=$3" -v "filepath=/home/$2" 'BEGIN {OFS=":"} {$1=user_name} {$3=user_id} {$4=user_id} {$6=filepath} {$7="/bin/bash"} {print $0}' >> $1
+```
+## 13-BASH Activity
+Find all executable files under the following four directories:
+/bin
+/sbin
+/usr/bin
+/usr/sbin
+Sort the filenames with absolute path, and get the md5sum of the 10th file from the top of the list.
+```bash
+#!/bin/bash
+A=$(find /bin /sbin /usr/bin /usr/sbin -executable -type f | sort | head -10 | tail -1)
+B=$(md5sum $A | cut -d" " -f1)
+echo $B
+```
+## 14-BASH Activity
+Sort the /etc/passwd file numerically by the GID field.
+For the 10th entry in the sorted passwd file, get an md5 hash of that entry’s home directory.
+Output ONLY the MD5 hash of the directory's name to standard output.
+```bash
+A=$(cut -d: -f4- /etc/passwd | sort -n | head -10 | tail -1 | cut -d: -f3)
+echo $A | md5sum | cut -d" " -f1
+```
+## 15-BASH Activity
+Write a script which will find and hash the contents 3 levels deep from each of these directories: /bin /etc /var
+Your script should:
+Exclude named pipes. These can break your script.
+Redirect STDOUT and STDERR to separate files.
+Determine the count of files hashed in the file with hashes.
+Determine the count of unsuccessfully hashed directories.
+Have both counts output to the screen with an appropriate title for each count.
+```bash
+find /bin /etc /var  ! -type p -maxdepth 3 -exec md5sum {} \; 1>good.txt 2>bad.txt
+A=$(wc -l good.txt | cut -d" " -f1)
+B=$(cat bad.txt | grep "Is a directory" | wc -l | cut -d" " -f1)
+echo "Successfully Hashed Files:" $A
+echo "Unsuccessfully Hashed Directories:" $B
+```
+## 16-BASH Activity
+Design a script that detects the existence of directory: $HOME/.ssh
+Upon successful detection, copies any and all files from within the directory $HOME/.ssh to directory $HOME/SSH and produce no output. You will need to create $HOME/SSH.
+Upon un-successful detection, displays the error message "Run ssh-keygen" to the user.
+```bash
+
+#!/bin/bash
+if [[ -d $HOME/.ssh ]]; then
+    cp -r $HOME/.ssh $HOME/SSH
+elif [[ ! -d $HOME/.ssh ]]; then
+    echo "Run ssh-keygen";
+fi
+```
+## 17-BASH Activity
+Write a script that determines your default gateway ip address. Assign that address to a variable using command substitution.
+NOTE: Networking on the CTFd is limited for security reasons. ip route and route are emulated. Use either of those with no switches.
+Have your script determine the absolute path of the ping application. Assign the absolute path to a variable using command substitution.
+Have your script send six ping packets to your default gateway, utilizing the path discovered in the previous step, and assign the response to a variable using command substitution.
+Evaluate the response as being either successful or failure, and print an appropriate message to the screen.
+
+```bash
+
+A=$(ip route | grep default | cut -d" " -f3)
+B=$(which ping)
+C=$" 6 received"
+D=$($B -c 6 $A | grep -Eo "$C")
+if [[ "$C" == "$D" ]]; then
+    echo "successful";
+else
+    echo "failure";
+fi
+```
+## 18-BASH Activity
+Create the following files in a new directory you create $HOME/ZIP:
+file1 will contain the md5sum of the text 12345
+file2 will contain the md5sum of the text 6789
+file3 will contain the md5sum of the text abcdef
+Create a zip file containing the three files above, without being stored inside a directory in the zip file. Name the zip file $HOME/ZIP/file.zip
+Utilize tar on $HOME/ZIP/file.zip to archive it into a file called $HOME/ZIP/file.tar.gz which should not include directories. Use the gzip option in tar, DO NOT use a seperate gzip binary.
+```bash
+
+mkdir $HOME/ZIP
+touch $HOME/ZIP/file{1..3}
+cd $HOME/ZIP
+echo 12345 | md5sum | cut -d" " -f1 > file1
+echo 6789 | md5sum | cut -d" " -f1 > file2
+echo abcdef | md5sum | cut -d" " -f1 > file3
+zip -u file.zip file{1..3}
+tar -zcvf file.tar.gz file.zip
+```
+## 19-BASH Activity
+Design a basic FOR Loop that iteratively alters the file system and user entries in a passwd-like file for new users: LARRY, CURLY, and MOE.
+Each user should have an entry in the $HOME/passwd file
+The userid and groupid will be the same and can be found as the sole contents of a file with the user's name in the $HOME directory (i.e. $HOME/LARRY.txt might contain 123)
+The home directory will be a directory with the user's name located under the $HOME directory (i.e. $HOME/LARRY)
+NOTE: Do NOT use shell expansion when specifying this in the $HOME/passwd file.
+The default shell will be /bin/bash
+The other fields in the new entries should match root's entry
+Users should be created in the order specified
+```bash
+
+for A in LARRY CURLY MOE; do
+B=$(cat $HOME/$A.txt)
+mkdir $HOME/$A
+head -1 $HOME/passwd | awk -F: -v "user_name=$A" -v "user_id=$B" -v "filepath=\$HOME/$A" 'BEGIN {OFS=":"} {$1=user_name} {$3=user_id} {$4=user_id} {$6=filepath} {$7="/bin/bash"} {print $0}' >> $HOME/passwd
+done
+```
+## 20-BASH Activity
+Write a bash script that will find all the files in the /etc directory, and obtains the octal permission of those files. The stat command will be useful for this task.
+Depending how you go about your script, you may find writing to the local directory useful. What you must seperate out from the initial results are the octal permissions of 0-640 and those equal to and greater than 642, ie 0-640 goes to low.txt, while 642 is sent to high.txt.
+Have your script uniquely sort the contents of the two files by count, numerically-reversed, and output the results, with applicable titles, to the screen. An example of the desired output is shown below.
+```bash
+
+A=$(find /etc -type f -exec stat -c '%a' {} \;)
+for x in $A; do
+    if [[ $x -le 640 ]]; then
+        echo $x >> low.txt
+    elif [[ $x -ge 642 ]]; then 
+        echo $x >> high.txt
+    fi
+done
+echo Files w/ OCTAL Perm Values 642+:
+cat high.txt | sort | uniq -c | sort -nr
+echo
+echo Files w/ OCTAL Perm Values 0-640: 
+cat low.txt | sort | uniq -c | sort -nr
+```
+# Bash Practice Test
+## 01 - Dogs vs Cats
+Replace every instance of 'cat' in "infile" with 'dog'.
+Replace every instance of 'Navy' in "infile" with 'Army'.
+Replacements are case-sensitive.
+Write the output to the file specifed by the variable 'outfile'.
+```bash
+function q1()
+{
+  #Valid Variables are:
+  infile=$1
+  outfile=$2
+  sed -e 's/cat/dog/' -e 's/Navy/Army/' $1 > $2
+}
+```
+## 02 - Who are the Users
+Create a script that will print to standard output all user names from the /etc/passwd file.
+```bash
+function q1()
+{
+  #Valid Variables are:
+  #none
+  awk -F: '{print $1}' /etc/passwd
+}
+```
+## 03 - Users and Abusers
+Print to standard output all usernames from the file path specified by the parameter filename sorted ascending numerically by user id.
+The file will be in the format of /etc/passwd
+```bash
+function q1()
+{
+  #Valid Variables are:
+  filename=$1
+  awk -F: '{print $3,$1}' $filename | sort -n | awk -F" " '{print $2}'
+}
+```
+## 04 - Maybe the Answer is 42
+Print to standard output the total number of files in the directory specified by dirname.
+If the directory does not exist, print 'Invalid Directory'
+The count excludes the '.' and '..' pseudo-directories.
+```bash
+function q1()
+{
+  #Valid Variables are:
+  dirname=$1
+  if [[ $1 ]]; then
+    find $1 -type f | wc -l
+  else
+    echo "Invalid Directory"
+  fi
+  
+}
+```
+## 05 - Cover Those Tracks
+Delete all files contained in the directory specified by dirdel
+Also delete the directory specified by dirdel
+```bash
+function q1()
+{
+  #Valid Variables are:
+  dirdel=$1
+  rm -rf $1
+}
+```
+## 06 - it's 1730 Somewhere
+Create a file specified by the name newfile.
+Set the file modified date to the value specified in filedate and time to '1730'. NOTE: filedate contains only a valid date in YYYYMMDD format, not a time.
+```bash
+function q1()
+{
+  #Valid Variables are:
+  newfile=$1
+  filedate=$2
+  touch -t $2"1730" $1
+}
+```
+## 07 - How Long is That Number
+coding bash
+Read the file specified by fname and perform an action based on the contents of the file:
+
+If contents are 0 to 9, print "single digit" to standard output.
+If contents are 10 to 99, print "double digit" to standard output.
+If contents are 100 to 999, print "triple digit" to standard output.
+Otherwise, print "Error" to standard output.
+```bash
+function q1()
+{
+  #Valid Variables are:
+  fname=$1
+  A=$(cat $1)
+  if [[ $A -le 9 ]]; then
+    echo "single digit"
+  elif [[ $A -le 99 ]]; then
+    echo "double digit"
+  elif [[ $A -le 999 ]]; then
+    echo "triple digit"
+  else
+    echo "Error"
+  fi
+}
+```
+## 08 - Redacted--Redacted
+Copy all lines from the file specified by src variable to the file specified by dst variable which DO NOT contain the text specified by match variable.
+```bash
+function q1()
+{
+  #Valid Variables are:
+  src=$1
+  dst=$2
+  match=$3
+  cat $1 | grep -v $3 > $2 
+}
+```
+## 09 - Hello, it's Ahnold
+Terminate the process that has the randomly assigned name specified by procname variable. procname does not contain path information.
+```bash
+function q1()
+{
+  #Valid Variables are:
+  procname=$1
+  pkill $1
+}
+```
+## 10 - Keeping up with the Modifications
+Create a sorted full-path list of all files in the directory dirpath that were modified within the previous day. Directories should not be included in the output. Print the list to the screen, one item per line.
+```bash
+function q1()
+{
+  #Valid Variables are:
+  dirpath=$1
+  find $1 -type f -mtime -1 | sort # the "-" means less then a day
+}
+```
+# Bash Practice
+Print all lines from the file specified as "filename" file to standard output that are not blank lines and are not comments.
+Comments are lines which include a '#' as the first character. Do not print anything else to standard output for this question.
+The format of the input file will be similar to that of the /etc/hosts file.
+```bash
+  filename=$1
+  egrep -v '^#|^$' $filename
+```
+Locate all files that end in ".log" in the specified directory by "logs" Create an archive of those files in a gzipped tar ball
+Store the gzipped tar ball as the file name specified in "archive".
+```bash
+  logs=$1
+  archive=$2
+  find $logs -name '*.log' -exec tar -czf  $archive {} +
+```
+Locate all files in the directory "searchdir" that contain the case insensitive text "CRITICAL".Write all the filenames with path into a file specified by argument "output". IMPORTANT NOTE: The contents of the file are what matter, not the filename. No filenames will contain critical.
+```bash
+  searchdir=$1
+  output=$2
+  grep -ir 'CRITICAL' $searchdir | cut -d: -f1 > $output
+```
+Given a space separated list of directories in "dirlist", your code will obtain the total number of files in all the directories. Subdirectories will NOT be included in the total. Print to standard output the total number of files.
+```bash
+  dirlist=$1
+  find $dirlist -type f -maxdepth 1 | wc -l
+```
+Delete all files contained in the directory specified by "dirdel" .Do not delete the directory specified by "dirdel".
+```bash
+  dirdel=$1
+  rm -r $dirdel/*
+```
+Create a file specified by the name contained in parameter "newfile". Set the modified date of the file to June 14, of the current year
+Set the modified time to the file to 0830.
+```bash
+  newfile=$1
+  touch -t 202406140830 $newfile
+```
+Read the file specified by "filename" and perform an action based on the contents of the file
+If the contents of the file are "abc", print "123" to standard output
+If the contents of the file are "def", print "789" to standard output
+If the contents of the file are "xyz", print "000" to standard output
+If the contents of the file are not "abc", "def", or "xyz", print "Error" to standard output
+```bash
+  filename=$1
+  A=$(cat "$filename")
+ 
+  if [[ "$A" == "abc" ]]; then
+    echo 123
+  elif [[ "$A" == "def" ]]; then
+    echo 789
+  elif [[ "$A" == "xyz" ]]; then
+    echo 000
+  else
+    echo Error
+  fi
+```
+Create a script that will perform the following actions:
+Copy all lines from the file specified by "src" to the file specified by "dst" which contain the text specified by "match"
+```bash
+  src=$1
+  dst=$2
+  match=$3
+  grep $match $src > $dst
+```
+Terminate the process that has the name specified by 'var'.
+The name of the process in 'var' varies and will change each time the application is run
+```bash
+  var=$1
+  pkill $1
+```
+Given a directory specified by "dirpath" create a sorted list of all files in the directory that were modified within the previous hour.
+Ensure that the full path to each file is used for the sort and is included in the output.
+The list should include all files in the specified directory and any subdirectories.
+Print this list to the screen, one item on each line.
+```bash
+  dirpath=$1
+  find $1 -type f -mmin -60 | sort
+```
