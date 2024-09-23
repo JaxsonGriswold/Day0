@@ -88,4 +88,6 @@ def test():
       print('This is Continue.')
    elif user == 'return':
       return 'This is return'
-   else
+   else:
+      print('Please choose a valid option.')
+  test()
