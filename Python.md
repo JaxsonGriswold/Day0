@@ -91,3 +91,15 @@ def test():
    else:
       print('Please choose a valid option.')
   test()
+
+def guess_number(n):
+   while True:
+      usr = int(input('Type a number:\n;))
+      if usr == n:
+         print('WIN')
+         break
+      elif usr < n:
+         print('too low')
+      elif usr > n:
+         print('too high')
+guess_number(44)
