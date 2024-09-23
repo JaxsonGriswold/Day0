@@ -1,1 +1,34 @@
+Python Day 1:
+when creating a script add .py to make sure syntax colors show
+15 // 8    integer division, takes last whole integer      answer would be 1 instead of 1.875
+3**4=81
+---tuple('hello world')
+('h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd')
++=     add this to itself
+.append()      allows you to append things to list
+.join()        join a list together,     ''.join()
+.split()       splits based on the character you want        passwd.split(':')            ['root', 'x', '0', '0', 'root'] 
+
+ 
+
+Excercise 1:
+1 string1 = 'name@somewhere.com'
+2 split1 = string1.split('@')
+3 split2 = string1.split('.')
+4 
+5 print(['name','somewhere','com'])
+----output: -----
+['name', 'somewhere', 'com']
+Alternate:
+email = 'name@domain.com'
+'''
+a = email.split('@')
+b = '.'.join(a)
+c = b.split('.')
+print(c)
+'''
+Second Alternate:
+print(('.'.join(email.split('@'))).split('.'))
+
+lst = []      makes a blank list that will allow you to append to it
 
