@@ -32,7 +32,7 @@ print(('.'.join(email.split('@'))).split('.'))
 
 lst = []      makes a blank list that will allow you to append to it
 
-Branching: ---------------------------
+## Branching: ---------------------------
 
 if <condition>:
     <indented code block>
@@ -61,7 +61,7 @@ Example 2:
   6 else:
   7     print('Type a POSITIVE number please!')
 
-FizzBuzz:-----------------------------------------------
+## FizzBuzz:-----------------------------------------------
   1 #!/usr/bin/env python3
   2 num = int(input('Enter a number:\n '))
   3 if num % 5 == 0 and num % 3 == 0:
@@ -73,7 +73,7 @@ FizzBuzz:-----------------------------------------------
   9 else:
  10     print(num)
 
-While Loops: -----------------------------------
+## While Loops: -----------------------------------
 def test():
  while True:
    user = input("Type 'Pass', 'Break', 'Continue, 'Return':\n").lower()
@@ -103,3 +103,58 @@ def guess_number(n):
       elif usr > n:
          print('too high')
 guess_number(44)
+
+## For Loop:
+
+AFCwest = ['Broncos', 'Chargers', 'Chiefs', 'Raiders']
+for team == 'Chiefs':
+   print('Boooo{}'.format(team))
+elif team == 'Broncos':
+   print('Please {} win again :\'('.format(team))
+else:
+   print(team)
+
+## Slicing:
+numbers[0::1]
+[1, 2, 3, 4, 5]
+
+
+## Range:
+range(10)
+list(range(10))
+-----start at 0, stop at 10, step by 2             list(range(0,10,2)
+                                                   0, 2, 4, 6, 8
+## Len: Shows the amount inside a list
+len(AFCwest)
+4
+
+## Dictionaries
+Dictionary.py
+  1 catalog = {'Apex':50, 'Cod':79.99, 'MVP':154.49, 'Tarkov':200}
+  2 
+  3 for game in catalog:
+  4     print('{}: {}'.format(game,catalog[game]))
+Output: --------------------------------
+Apex: 50
+Cod: 79.99
+MVP: 154.49
+Tarkov: 200
+
+  1 catalog = {'Apex':50, 'Cod':79.99, 'MVP':154.49, 'Tarkov':200}
+  2 order = [('MVP',5),('Tarkov',2)]
+  3 print(order[0][1] * 154.49)
+Output:-----------------------------------
+772.45
+  
+  Gives the Total---------------------------------------------------------
+  1 catalog = {'Apex':50, 'Cod':79.99, 'MVP':154.49, 'Tarkov':200}
+  2 order = [('MVP',5),('Tarkov',2)]
+  3 total = 0
+  4 for i in order:
+  5     print(catalog[i[0]] * i[1])
+  6     total += catalog[i[0]] * i[1]
+  7 print(total)
+Output:------------------------------
+772.45
+400
+1172.45
