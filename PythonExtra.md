@@ -208,24 +208,24 @@ def q1(floatstr):
 //////////////////////////1/////////////////////
 !!!!!!!!!!!!!!!!!!!!!!CORRECT!!!!!!!!!!!!!!!!!!!!!!!
 ///////////////////////question 2//////////////////////
- 20 def q2(*args):
- 21     '''
- 22     TLO: 112-SCRPY006, LSA 3
- 23     TLO: 112-SCRPY007, LSA 4
- 24     Given the variable length argument list, return the average
- 25     of all the arguments as a float
- 26     '''
- 27     numbers = args
- 28     converted = []
- 29     convert = 0.0
- 30     average = 0.0
- 31     for i in numbers:
- 32         convert = float(i)
- 33         converted.append(convert)
- 34     print(converted)
- 35     print(type(converted))
- 36     average = sum(converted)/len(converted)
- 37     return average
+  def q2(*args):
+      '''
+      TLO: 112-SCRPY006, LSA 3
+      TLO: 112-SCRPY007, LSA 4
+      Given the variable length argument list, return the average
+      of all the arguments as a float
+      '''
+      numbers = args
+      converted = []
+      convert = 0.0
+      average = 0.0
+      for i in numbers:
+          convert = float(i)
+          converted.append(convert)
+      print(converted)
+      print(type(converted))
+      average = sum(converted)/len(converted)
+      return average
 
 
 #####################instructor solution1######################
@@ -358,7 +358,7 @@ pass
 def q6(catalog, order):
   total = 0
   for i in order:
-    total += catalog[i[0]]) * i[1]
+    total += catalog[i[0]] * i[1]
   return total
   pass
 //////////////////////////6////////////////////////
