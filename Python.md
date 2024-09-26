@@ -158,3 +158,254 @@ Output:------------------------------
 772.45
 400
 1172.45
+
+###FileIO
+## Open
+with open("test.txt") as fp:
+pass
+when inside you can adjust what mode youre in with 'w'(write) and  
+
+Example: --------------------------
+with open('test.txt', 'w') as fp:
+    fp.write('First line\n')
+    lines = ['Second line\n', 'Third line\n', 'Fourth line\n', 'Last line\n']
+    fp.writelines(lines)
+￼
+with open("test.txt",'w') as fp:
+   fp.write('First line\n')
+   lines = ['Second Line\n', 'Third Line\n', 'Fourth Line\n', 'Last Line\n']
+   fp.writelines(lines)
+
+## Read Files
+with open('test.txt', 'r') as fp:
+    fp.read()
+
+with open('test.txt') as fp:
+    fp.read(5)                  ----- Reads the specified amount of characters shown
+    
+with open('test.txt') as fp:
+    for line in fp:
+        print(line, end='')     ----- 
+
+## File IO - Chapter 10.15 Questions
+
+The textfile, travel_plans.txt, contains the summer travel plans for someone with some commentary. Find the total number of characters in the file and save to the variable num.
+with open)'travelplans.txt', 'r') as fp:
+   num = len(anything.read())
+
+## Args+Kwargs
+---ord('Z')
+90
+---chr(90)
+'Z'
+---'1'.isnumeric(1)
+True
+---'a'.isnumeric(a)
+False
+
+Python Practice
+Question 1
+Given the floatstr, which is a comma separated string of floats, return a list with each of the floats in the argument as elements in the list.
+
+lst = []
+for i in floatstr.split(','):
+    lst.append(float(i))
+Question 2
+Given the variable length argument list, return the average of all the arguments as a float.
+
+type(args)
+    sum = 0 
+    for addend in args:
+        sum += addend
+        avg = sum / float(len(args))
+    return avg 
+Question 3
+Given a list (lst) and a number of items (n), return a new list containing the last n entries in lst.
+
+lst1 = []
+    for i in lst[-n:]:
+        lst1.append(int(i))
+    return lst1
+Question 4
+Given an input string, return a list containing the ordinal numbers of each character in the string in the order found in the input string.
+
+  lst = []
+    for i in strng:
+        lst.append(ord(i))
+    return lst 
+Question 5
+Given an input string, return a tuple with each element in the tuple containing a single word from the input string in order.
+
+ arr = []
+    arr = strng.split(' ')
+    t = tuple(arr)
+    return t
+Question 6
+Given a dictionary (catalog) whose keys are product names and values are product prices per unit and a list of tuples (order) of product names and quantities, compute and return the total value of the order.
+
+ total = 0
+    for i in order:
+        total += catalog[i[0]]*i[1]
+    return total
+Question 7
+Given a filename, open the file and return the length of the first line in the file excluding the line terminator.
+
+ with open(filename, 'r') as fp:
+        i = fp.readline()
+        return(len(i)) -1
+Question 8
+Given a filename and a list, write each entry from the list to the file on separate lines until a case-insensitive entry of "stop" is found in the list. If "stop" is not found in the list, write the entire list to the file on separate lines.
+
+with open(filename, 'w') as fp:
+        for word in lst:
+            if word.lower() == 'stop':
+                break
+            else:
+                fp.write('{}\n'.format(word))
+Question 9
+Given the military time in the argument miltime, return a string containing the greeting of the day. 0300-1159 "Good Morning" 1200-1559 "Good Afternoon" 1600-2059 "Good Evening" 2100-0259 "Good Night"
+
+ if miltime >= 300 and miltime <= 1159:
+        return "Good Morning"
+ elif miltime >= 1200 and miltime <= 1559:
+        return "Good Afternoon"
+ elif miltime >= 1600 and miltime <= 2059:
+        return "Good Evening"
+ elif miltime >= 2100 and miltime <= 259:
+        return "Good Night"
+Question 10
+Given the argument numlist as a list of numbers, return True if all numbers in the list are NOT negative. If any numbers in the list are negative, return False.
+
+ for i in numlist:
+        if i < 0:
+            return False
+ return True       
+
+Python Practice 2
+def q1(radius):
+    # Given the radius of a sphere, calculate and return 
+    # its surface area. Surface area is given by the following:
+    # A = 4*PI*(r**2) where PI is the constant 3.14159 and r
+    # is the radius of the sphere.
+
+    return 4*3.14159*(radius**2)
+
+    pass
+def q2(addr):
+    # Given an IPv4 address as a string in dotted decimal notation,
+    # return True if the address is multicast, otherwise return False.
+    # IPv4 multicast addresses are those in the range 224.0.0.0 to
+    # 239.255.255.255.
+    # ipaddress.IPv4Address has been disabled for this function.
+    counter = 0
+    arr = addr.split('.')
+    if int(arr[0]) >= 224 and int(arr[0]) <= 239:
+        return True
+    else:
+        return False
+    if counter == 1:
+        return True
+
+
+    #pass
+def q3():
+    # Return the well-known ports as a list of integers.
+    # Ports 0 through 1023 are considered well-known.
+
+    arr = []
+    for x in range(1024):
+        arr.append(x)
+    return arr
+
+    pass
+def q4(number):
+    # Given a string for a number spelled out as a word,
+    # return the number as an integer. The number will
+    # only be 'zero','one','two','three', or 'four'.
+
+    if number == 'zero':
+        return 0
+    elif number == 'one':
+        return 1
+    elif number == 'two':
+        return 2
+    elif number == 'three':
+        return 3
+    elif number == 'four':
+        return 4
+
+
+    pass
+def q5():
+    # Read a string from the user and return the integer conversion of it.
+    # Ensure the conversion is successful by removing any non-numeric characters.
+    # You may assume that the input will contain at least 1 numeric character.
+    bruh = ''
+    arr = ['0','1','2','3','4','5','6','7','8','9']
+    a = input()
+    for x in list(a):
+        if x in arr:
+            bruh += x
+        else:
+            continue
+    return int(bruh)
+
+
+    pass
+def q6(first,middle,last,domain):
+    # Given a name and domain, print to the screen their email address.
+    # The address should take the form: 
+    # <first>.<middle initial>.<last>@<domain>.com
+    # Only include a middle initial (the first letter of the middle name).
+    # Ensure the address is all lowercase.
+    # Append '.com' to the given domain.
+    
+    print(f'{first.lower()}.{middle[0]}.{last.lower()}@{domain}.com')
+
+
+    pass
+def q7(infile,outfile):
+    # Copy the contents of the file whose filename is given in 
+    # infile to the file whose name is given in outfile. Overwrite
+    # outfile if it already exists.
+    # shutil.copyfile, copy, and copy2 have been disabled for this function.
+    with open(infile, 'r+') as fp, open(outfile, 'w') as out:
+        out.write(fp.read())
+            
+
+    pass
+def q8(address):
+    # Given an email address of the form:
+    # <first>.<middle initial>.<last>@<domain>.com
+    # return the 4 elements of the address as a tuple in the order
+    # that they appear in the address.
+    # For example, if given 'nicholas.r.yost@somedomain.com,
+    # ('nicholas','r','yost','somedomain') should be returned.
+
+    
+    return tuple((address.replace('.com','')).replace('@','.').split('.'))
+
+    pass
+def q9(strng):
+    # Given a string, return a dictionary whose keys are the set of
+    # unique characters within the string and whose values are the
+    # count of occurances of each character.
+    # For example, if given 'hello', the returned dictionary should be
+    # { 'l':2, 'h':1, 'e':1, 'o':1 }
+    # collections.Counter has been disabled for this function.
+    count = 0
+    dict = {}
+    for x in list(strng):
+        dict[x] = strng.count(x)
+    return dict
+    
+    pass    
+def q10():
+    # Return your last name as a string. Use all lowercase letters.
+    pass
+
+    return 'hunt'
+
+if __name__ == '__main__':
+    pass
+
