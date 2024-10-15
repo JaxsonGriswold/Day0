@@ -1,6 +1,10 @@
 http://10.50.22.129:8000/
 https://os.cybbh.io/public
 
+ADMIN STATION
+10.50.28.68
+
+
 ###Powershell Day 1:
 ##Commands and Arguments
 Get-Content -Path "C:\Test Files\content.txt"                                         # Displays the contents of the file
