@@ -1,60 +1,69 @@
 # Windows_PowerShell
     Level 1:
     Primer_CLI(1)
-    1.conhost.exe
-    2.WSL
-    3.Windows Terminal
-    4.cmd.exe
-    5.string
-    6.(.NET)
-    7.PowerShell version
-    8.pwsh.exe
-    9.PowerShell.exe
-    Level 5:Codex_Heriticus
+    1.Which program starts with every CMD and PowerShell instance in Windows 7 and later?     conhost.exe
+    2.What Windows 10 feature supports installing Linux subsystem?        WSL
+    3.Which Windows feature can be used to interact with any CLI on the Windows system concurrently using multiple tabs?       Windows Terminal
+    4.What was the default shell (command line) of Windows versions Windows 2000 through Windows 8.1?                cmd.exe
+    5.What data type do all cmd.exe commands return?                   string
+    6.What framework is PowerShell built on?        .NET
+    7."What will all of the below give you?
+(get-host).version
+$host.version
+$psversiontable.psversion"               PowerShell version
+    8.After PowerShell Core is installed what CLI command launches it?      pwsh.exe
+    9."After PowerShell Core is installed you can still run the built in version of PowerShell side-by-side. What CLI command will launch the built in version?"             PowerShell.exe
+    
+Level 5:Codex_Heriticus
     Windows_PowerShell_Basics(5)
-    1.verb-noun
-    2.get-commandCreate a new branch for this commit and start a pull request Learn more about pull requests
-    3.get-verb
-    4.objects
-    5.properties,methods
-    6.get-member
+    1.What syntax do PowerShell cmdlets follow?      verb-noun
+    2.What PS command will list all PowerShell cmdlets?              get-commandCreate a new branch for this commit and start a pull request Learn more about pull requests
+    3.What PowerShell command will list all verbs?                 get-verb
+    4.BASH commands output strings. PowerShell commands output what data type?         objects
+    5.All PowerShell objects are comprised of what two things?                 properties,methods
+    6.What command will list all things that make up a PowerShell object?          get-member
     Windows_PowerShell_Alias(5)C:\Windows\SysWOW64WinEvt\Logs\System.evtx
-    1.get-alias
-    2.get-childitem {gci}
+    1.What PowerShell command will list PowerShell aliases?     get-alias
+    2.What PowerShell command lists all of the contents of a directory?     get-childitem {gci}
     Windows_PowerShell_Help(5)
-    1.get-help
-    2.-full
-    3.update-help
-    4.-online
+    1.What is the basic cmdlet that displays help about Windows Powershell cmdlets and concepts?       get-help
+    2.PowerShell "help files" don't show the entire help file with a basic command. What switch option shows the entire help file?        -full
+    3.What PowerShell command will update the PowerShell "help files" to the latest version?       update-help
+    4.What help switch will show you the "help files" on Microsoft's website, in your default browser?        -online
     Windows_PowerShell_Interaction(5)
-    1.start chrome
-    2.(get-process chrome).kill()
-    3.stop-process -name chrome
+    1.What command will start the Chrome browser on your machine?         start chrome
+    2.What command using a PS Method will stop chrome?       (get-process chrome).kill()
+    3.What PowerShell command (without using a method) will stop the Chrome process?         stop-process -name chrome
     Windows_PowerShell_CIMClasses(5)
-    1.get-WMIobjectWin32_processor
+    1.PowerShell doesn't have a native cmdlet that will give you processor information (such as get-processor or get-cpu). Knowing this information might be necessary. What command would give you information about the system's processor?   
+    Answer: get-WMIobjectWin32_processor
     Windows_PowerShell_Logic(5)
-    1.get-content
-    2.measure-object
+    1.What PowerShell command will read a text file?      get-content
+    2.What PowerShell command will allow for counting lines in a file, averaging numbers, and summing numbers?        measure-object
     Windows_PowerShell_REGEX(5)
-    1.select-stringls -l /proc/1904
+    1.What PowerShell command searches for text patterns in a string?
+            select-stringls -l /proc/1904
             ^use the key that was enumerated from the symmetric file
                 Anwser: DeCrypt
     Windows_PowerShell_Basics(5)
         lects  the listing of files for processes executing the command that begins with the characters of c.  Multiple commands may be specified, using                 multiple -c            options.  They are joined in a
                 single ORed set before participating in AND option selectio
-    7.(C:\Users\)
-    Windows_PowerShell_Basics(10)Create a new branch for this commit and start a pull request Learn more about pull requests
-    8.> (get-process | get-member -membertype property).count
+    7.Users' files are stored in their corresponding home directory. What is the literal path to all home directories on a Windows 10 system?        C:\Users\
+    Windows_PowerShell_Basics(10)
+    8.> How many properties are available for the get-process cmdlet?
+        (get-process | get-member -membertype property).count
         display value: 52
     Windows_PowerShell_Alias(10)
-    3. 3
+    3. How many aliases does PowerShell have for listing the contents of a directory?     3
     Windows_PowerShell_Help(10)
-    5. > Get-Process Powershell
+    5. > When requesting the help file for the get-process cmdlet, what full command is the 9th example given?        Get-Process Powershell
     Windows_PowerShell_CIMClasses(10)
-    2. > Get-WMIObject WIN32_service | ?{$_.Name -like "legoland"} | select Description
+    2. > To complete this challenge, find the description of the Lego Land service.
+    Get-WMIObject WIN32_service | ?{$_.Name -like "legoland"} | select Description
     answer: i_love_legos
     Windows_PowerShell_Logic(10)
-    3. > Get-Content words2.txt | Measure-Object -Word
+    3. > In the CTF folder on the CTF User's Desktop, count the number of words in words2.txt.
+        Get-Content words2.txt | Measure-Object -Word
         Answer: 5254 words
     4. > (Get-ChildItem | Measure-Object).count
         Answer: 925 files
@@ -66,6 +75,7 @@
         Answer: 456976
     Windows_PowerShell_Basics(10)
     9. > (Get-Process | Get-Member -membertype method).count
+        Answer: 19
     Windows_PowerShell_Logic(10)
     8. > (Get-ChildItem -recurse | Where-Object {$_.PSIsContainer}).count
         Answer: 411
@@ -256,7 +266,7 @@
     2.HKU
     3.HKCU
     4.HKEY_USERS\S-1-5-21-2881336348-3190591231-4063445930-1002 
-    5.Get-ChilItem
+    5.Get-ChildItem
     6.Get-Item
     Level 10:
     7.HKLM:\SOFTWARE\MICROSOFT\WINDOWS\CURRENTVERSION\RUN *All CAPS*
@@ -308,11 +318,11 @@
     17.fsutil fsinfo drives
     Level 5:
     1.directory
-    2.hidden#count
+    2.hidden
     3.Get-ChildItem -Force
     4.Get-FileHash -Algorithm sha512
     5.Get-Acl
-    6.hostsCreate a new branch for this commit and start a pull request Learn more about pull requests
+    6.What Windows file maps hostnames to IP addresses?      hosts   -Create a new branch for this commit and start a pull request Learn more about pull requests
     Level 10:
     7.BUILTIN\Users
     8. 
