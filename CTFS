@@ -1,0 +1,48 @@
+##Windows_PowerShell_Interaction1
+What command will start the Chrome browser on your machine?
+Start-Process chrome
+
+##Windows_PowerShell_Interaction2
+What command using a PS Method will stop chrome?
+Flag is the full command.
+(Get-Process chrome*).kill()
+
+##Windows_PowerShell_Interaction3
+What PowerShell command (without using a method) will stop the Chrome process?
+Stop-Process -name chrome
+
+##Windows_PowerShell_CimClasses1
+PowerShell doesn't have a native cmdlet that will give you processor information (such as get-processor or get-cpu). Knowing this information might be necessary. 
+What command would give you information about the system's processor?
+Get-CimInstance -ClassName Win32_Processor
+
+##Windows_PowerShell_Logic1
+What PowerShell command will read a text file?
+Get-Content
+
+##Windows_PowerShell_Logic2
+What PowerShell command will allow for counting lines in a file, averaging numbers, and summing numbers?
+Measure-Object
+
+##Windows_PowerShell_Regex_1
+What PowerShell command searches for text patterns in a string?
+Select-String
+
+##Windows_PowerShell_Basics_7
+Users' files are stored in their corresponding home directory. What is the literal path to all home directories on a Windows 10 system?
+C:\Users\
+
+##Windows_PowerShell_Basics_8
+How many properties are available for the get-process cmdlet?
+
+
+##Windows_PowerShell_Alias3
+How many aliases does PowerShell have for listing the contents of a directory?
+3
+
+##Windows_PowerShell_Help 5
+When requesting the help file for the get-process cmdlet, what full command is the 9th example given?
+Get-Process pwsh
+
+##Windows_PowerShell_CimClasses2
+To complete this challenge, find the description of the Lego Land service.
