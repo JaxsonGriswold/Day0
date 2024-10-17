@@ -125,7 +125,7 @@ Level 5:Codex_Heriticus
     (what is read first), find the correct flag.
     The flag is the string after the #, without the preceding space.
 
-    > I wasted my attemt.
+    > I wasted my attempt.
 #--------------------------------------------------------------------------------------------
     *Fuck Linux
 # Linux_Basics
@@ -155,7 +155,8 @@ Level 5:Codex_Heriticus
         > echo "OneWayBestWay" | sha512sum
             Answer: a81bc463469ee1717fc9e388e3799c653f63a3de5e9496b5707b56488b046cbf75665235d316c
             5c0053a597dc7d40c917a2d9006fe35e9cb47766c05ac71989b
-        6. 
+        6. Use File: /home/garviel/Encrypted
+           This file contains encrypted contents. Identify its file type, then decode its contents.
         $ file Encrypted
         $ unzip Encrypted
         $ file cipher
