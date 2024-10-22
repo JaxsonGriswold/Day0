@@ -208,7 +208,7 @@ Level 5:Codex_Heriticus
         9. Expand your mind
         10. Ph'nglui mglw'nafh Cthulhu
         Linux Basics Regular Expressions(10)
-        1. 
+        1. Using the commands ls and grep, identify the number of directories in /etc/ that end in .d
         $ ls -l /etc | grep '^d.*\.d$'
             answer: 28
         2.
@@ -216,11 +216,12 @@ Level 5:Codex_Heriticus
         $ grep '^[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}$' numbers | wc -l
             Answer: 78
         
-        3.
+        3. Use regular expressions to match patterns similar to valid and invalid IP addresses.
          $ cat numbers | grep -oP '\b(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|            [01]?[0-9][0-9]?)\b' | wc -l
                 Answer: 18
         
-        4
+        4. Use regular expressions to match patterns that look similar to a MAC Address. Flag is a count of the number of matches.
+            
         Linux Basics Reformat(10)
         1.
         Linux Basics LFS Hierarchy(10)
@@ -457,12 +458,24 @@ Level 5:Codex_Heriticus
     3. /etc/init.d/reboot
     4. 2,3,4,5
     Linux Boot SysD(5)
-    1. 
-    2.
-    3.
-    4.
-    5.
-    6.
+    1. Identify the file that init is symbolically-linked to, on the SystemD init machine.
+    ls -l /sbin/init
+    Answer: /lib/systemd/systemd
+    2. What is the default target on the SystemD machine and where is it actually located?
+        systemctl get-default
+        systemctl show -p FragmentPath graphical.target
+    Answer: graphical.target,/lib/systemd/system/graphical.target
+    3. What unit does the graphical.target want to start, based solely on its configuration file?
+        cat /lib/systemd/system/graphical.target
+    Answer: display-manager.service
+    4. What dependency to graphical.target will stop it from executing if it fails to start, based solely on its static configuration file?
+        cat /lib/systemd/system/graphical.target (Look at Requires)
+    Answer: multi-user.target
+    5. How many wants dependencies does SystemD actually recognize for the default.target
+        cat /lib/systemd/system/default.target
+    Answer: 7
+    6. What is the full path to the binary used for standard message logging?
+        
     Linux Boot GRUB
     _.
 
