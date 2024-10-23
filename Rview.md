@@ -50,4 +50,16 @@ Abnormal for a Gov device ex.Spotify, Steam, Discord
 Mispellings of words
 C:\windows\system32
 C:\users\public\downloads\(for ex.) svchost.exe        stuff running from the wrong area
+Autoruns - use Jump to entry option
 
+
+Linux-
+Find Evil
+Process Validity
+
+Windows-
+Process Validity
+
+User things on Windows Boot process
+/etc/environment
+/etc/profile
