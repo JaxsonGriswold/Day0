@@ -63,3 +63,12 @@ Process Validity
 User things on Windows Boot process
 /etc/environment
 /etc/profile
+
+
+
+
+reg query HKU
+get-localuser | select name,sid
+reg query HKEY_USERS\S-1-5-21-2881336348-3190591231-4063445930-1003\SOFTWARE\MICROSOFT\WINDOWS\CURRENTVERSION\RUNONCE
+
+10.50.22.129:8000     CTF
