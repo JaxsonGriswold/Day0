@@ -234,9 +234,15 @@ Protocol Data Unit(PDU)
         Inject manipulated messages
         MitM by becoming active forwarder
 
-# 
-
-
+## TRANSPORT to APPLICATION LAYER
+# Describe Transport Layer Protocols
+    Connection-oriented
+        TCP - Segments
+        Unicast traffic
+    
+    Connection-less
+        UDP - Datagrams
+        Broadcast, Multicast, or Unicast Traffic
 
 
 
