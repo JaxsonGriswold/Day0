@@ -244,6 +244,7 @@ Protocol Data Unit(PDU)
         UDP - Datagrams
         Broadcast, Multicast, or Unicast Traffic
 
+# NOTE:   TCP TOOLS WILL NOT SEARCH FOR UDP, CHANGE THE PARAMETERS
 
 
 
