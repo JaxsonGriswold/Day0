@@ -246,8 +246,53 @@ Protocol Data Unit(PDU)
 
 # NOTE:   TCP TOOLS WILL NOT SEARCH FOR UDP, CHANGE THE PARAMETERS
 
+Ping a range:
+    for i in {1..254}; do (ping -c 1 172.16.82.$i | grep "bytes from" &) ; done
 
+    Version scan (-sV)
 
+nc -zvnw1 <IP> <Port>
+for i in {1..254}; do nc -nvzw1 172.16.82.$i 20-23 80 2>&1 & done | grep -E 'succ|open'
+for i in {1..254}; do nc -nuvzw1 172.16.82.$i 1000-2000 2>&1 & done | grep -E 'succ|open'
+
+Windows: netstat
+Linux: ss (netstat depreciated)
+
+Example options useful for both netstat and ss: -antp
+a = Displays all active connections and ports.
+n = No determination of protocol names. Shows 22 not SSH.
+t = Display only TCP connections.
+u = Display only UDP connections.
+p = Shows which processes are using which sockets.
+
+Windows: tasklist
+Linux: ps or top
+
+Example options useful for ps: -elf
+e = Show all running processes
+l = Show long format view
+f = Show full format listing
+
+File search
+find / -name hint* 2> /dev/null
+find / -iname flag* 2> /dev/null
+
+DEV TCP Banner Grab
+exec 3<>/dev/tcp/172.16.82.106/22; echo -e "" >&3; cat <&3
+
+DEV TCP Scanning
+for p in {1..1023}; do(echo >/dev/tcp/172.16.82.106/$p) >/dev/null 2>&1 && echo "$p open"; done
+
+--------------------------------------------------------------------------------------------------
+Red Network Recon
+Entry Float IP: 10.50.26.58
+
+Your Network Number is 5
+
+Credentials: net5_studentX:passwordX
+
+X is your student number
+-------------------------------------------------------------------------------------------------
 
 
 
