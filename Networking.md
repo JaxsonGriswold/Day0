@@ -294,5 +294,12 @@ Credentials: net5_studentX:passwordX
 X is your student number
 -------------------------------------------------------------------------------------------------
 
+Interface        IP Address                        S/L  Description
+---------        ----------                        ---  -----------
+eth0             172.16.120.1/29                   u/u  INTERNET 
+eth1             172.16.120.10/29                  u/u  REDNET 
+eth2             172.16.101.30/27                  u/u  DMZ 
+lo               127.0.0.1/8                       u/u  
+                 120.0.0.1/32
 
 
